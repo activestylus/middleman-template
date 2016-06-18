@@ -1,0 +1,73 @@
+@mixin abs-tr($r,$t) { position: absolute; top: #{$t}px; right: #{$r}; }
+@mixin abs-tl($r,$t) { position: absolute; top: #{$t}px; left: #{$r}; }
+@mixin plr($p) {padding-left: $p; padding-right: $p;}
+@mixin trbl($t,$r,$b,$l,$p:absolute) {
+  top: $t; right: $r; bottom: $b; left: $l; position: $p;
+}
+@mixin hover-position($p1,$p2) {
+  background-position: $p1;
+  &:hover { background-position: $p2 }
+}
+@mixin hover-color($p1,$p2) {
+  color: $p1;
+  &:hover { color: $p2 }
+}
+@mixin radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+@mixin see-thru($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
+}
+@mixin colors($text,$back) {
+  color: $text;
+  background-color: $back;
+}
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+@mixin opacity-hover($default,$hover) {
+  @include opacity($default);
+  &:hover { @include opacity($hover); }
+}
+@mixin clearfix {
+  &:before, &:after { content: ""; display: table; }
+  &:after { clear: both; }
+}
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

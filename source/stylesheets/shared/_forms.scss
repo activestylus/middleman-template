@@ -1,0 +1,65 @@
+@import 'constants';
+@import 'mixins';
+@import 'responsive';
+$input-background: #fff;
+$input-color: #333;
+$input-font: inherit;
+$input-border-color: #ddd;
+$input-border-radius: 3px;
+$red: #c00;
+$required: #1C9F63;
+input, select { display: inline-block; }
+input, select, label, textarea {
+  box-sizing: border-box;
+}
+input, textarea, select {
+  @include radius($input-border-radius);
+  border: 1px solid $input-border-color;
+  background-color: rgba($input-background,0.5);
+  &:focus { border-color: $link; background-color: rgba($input-background,0.7);}
+  &:disabled { background-color: transparent; opacity: 0.3; }
+  &[type=submit] {border:none;}
+}
+input[type=file] { background: rgba($input-background,0.5);}
+input, textarea { @include radius($input-radius) padding: 5px; ; box-sizing: border-box; }
+select { color: $link; display: block; padding: 5px; }
+label {
+  display: block; color: $link;
+  &.span, &.boolean {display: inline-block}
+  &.boolean { position: relative; top:4px; input { margin-right: 6px; } }
+  &.break { clear: both; padding-top: 14px; }
+}
+.append-check label { padding-top: 25px; padding-left: 10px; }
+input { width: auto}
+.full {
+  input, select, textarea { width: 100%; }
+  .span, .boolean { input, select, textarea {display: inline-block; width: auto} }
+  input[type=submit] { width: auto }
+  label { margin-bottom: 0.2em; }
+}
+.input.field_with_errors, .field_with_errors.required {
+  &.input input,
+  &.input textarea,
+  &.input select, input, textarea, select {
+    border: 1px solid $red; background-color: lighten($red, 37%); color: $red;
+    &:focus { border: 1px solid $red; background-color: lighten($red, 37%); }
+  }
+}
+.input { padding-bottom: 10px; }
+.input.required {
+  input, textarea, select { border-color: $required; &:focus { border-color: $link; } }
+}
+.disabled { @include opacity(0.3); }
+body .input {
+  select,input,textarea {font-family: $input-font;}
+  &.numeric, &.integer, &.string, &.text, &.datetime, &.date, &.password, &.email, &.select, &.url {
+    select, input, textarea {
+      font-size: 15px; min-height: 26px; margin-bottom: 3px; line-height: 24px;}
+    }
+  &.large { select, input, textarea { font-size: 24px; font-weight: bold; min-height: 37px; }}
+}
+span.error {
+  @include radius($input-border-radius);
+  display: inline-block; font-size: 12px; padding: 2px 5px; background: rgba($red, 0.9); color: #fff;
+}
+span.hint {font-size: 12px}

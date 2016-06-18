@@ -1,0 +1,23 @@
+doctype html
+html
+  
+  head
+    title= [ cpdata.title, site.title ].compact.join(' | ')
+    = stylesheet_link_tag :all
+    = javascript_include_tag :all
+    meta charset="utf-8"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+  
+  body.grid-100 class=bodyclass
+    header
+      .page
+        - if page_is 'home'
+          #logo.nolink= site.title
+        - else
+          #logo= link_to site.title, '/'
+        ul
+          - site.menu.map do |i|
+            li= nav_link i.values.first, i.keys.first
+    #yield
+      .page
+        = yield

@@ -1,0 +1,10 @@
+@import "shared/reset";
+@import "shared/buttons";
+@import "shared/constants";
+@import "shared/grid";
+@import "shared/fonts";
+@import "shared/responsive";
+body { font-family: Arial; height: 100%; }
+.page { max-width: 1280px; margin: 0 auto; position: relative; }
+#yield .page, .yield .page { padding-bottom: 60px;}
+footer { }

@@ -1,0 +1,136 @@
+@import 'constants';
+@import 'mixins';
+@import 'responsive';
+$pad-x: 10px;
+.col {
+  margin: 0; position: relative; float: left; box-sizing: border-box;
+  @include max-screen(480px) {
+    float: none;
+  }
+}
+body {
+  .col.\31, .col.\32, .col.\33, .col.\34, .col.\35, .col.\36,
+  .col.\37, .col.\38, .col.\39, .col.\31, .col.\31, .col.\31 2,
+  .col.\31 5, .col.\32 0, .col.\32 5, .col.\33 0, .col.\33 3, .col.\34 0,
+  .col.\34 5, .col.\35 0, .col.\35 5, .col.\36 0, .col.\36 6, .col.\37 0,
+  .col.\37 5, .col.\38 0, .col.\38 5, .col.\39 0, .col.\39 5, .col.\31 00
+   {
+    @include max-screen(480px) { width: 100%; padding: $pad-x;}
+  }
+  .pad-r, .pad-l {
+    @include max-screen(480px) { 
+      padding: 0 $pad-x;
+    }
+  }
+}
+.rel {position: relative;}
+.pd {padding: 7px;}
+.pad-r { padding-right: $pad-x; } .pad-l { padding-left: $pad-x; } .pad-t { padding-top: $pad-x; }
+.mar-r { margin-right: $pad-x; } .mar-l { margin-left: $pad-x; } .mar-t { margin-top: $pad-x; }
+.center { float: none; margin: 0 auto;}
+.pad { padding: 12px 20px; box-sizing: border-box; }
+.grid-12 {
+	.col.\31      { width: 8.3333333% }
+	.col.\32      { width: 16.6666667% }
+	.col.\33      { width: 25% }
+	.col.\34      { width: 33.333333% }
+	.col.\35      { width: 41.6666667% }
+	.col.\36      { width: 50% }
+	.col.\37      { width: 58.33333% }
+	.col.\38      { width: 66.66667% }
+	.col.\39      { width: 75% }
+	.col.\31 0    { width: 83.33333% }
+	.col.\31 1    { width: 91.6666667% }
+  .col.\31 2    { width: 100%; margin: 0 }	
+}
+
+.col img      { height: auto; display: block }
+.col img.full { width: 100%; }
+.tall { height: 100%; }
+.gutter-10 {
+  .col {
+    padding-left: 5px; padding-right: 5px;
+    &:first-child { padding-left: 0; }
+    &:last-child  { padding-right: 0; }
+  }
+  img.float-left   { margin: 0 10px 10px 0; }
+}
+.grid-100 {
+  .col.\35    { width: 5% }
+  .col.\31 0  { width: 10% }
+  .col.\31 5  { width: 15% }
+  .col.\32 0  { width: 20% }
+  .col.\32 5  { width: 25% }
+  .col.\33 0  { width: 30% }
+  .col.\33 3  { width: 33.333333333% }
+  .col.\34 0  { width: 40% }
+  .col.\34 5  { width: 45% }
+  .col.\35 0  { width: 50% }
+  .col.\35 5  { width: 55% }
+  .col.\36 0  { width: 60% }
+  .col.\36 6  { width: 66.666666667% }
+  .col.\37 0  { width: 70% }
+  .col.\37 5  { width: 75% }
+  .col.\38 0  { width: 80% }
+  .col.\38 5  { width: 85% }  
+  .col.\39 0  { width: 90% }
+  .col.\39 5  { width: 95% }  
+  .col.\31 00 { width: 100% }
+}
+@include max-screen(640px) {
+  body.grid-100 {
+    .col.\35,.col.\31 0 ,.col.\31 5 ,.col.\32 0 ,.col.\32 5 ,.col.\33 0 ,.col.\33 3 ,.col.\34 0 ,.col.\34 5 ,.col.\35 0 ,.col.\35 5 ,.col.\36 0 ,.col.\36 6 ,.col.\37 0 ,.col.\37 5 ,.col.\38 0 ,.col.\38 5 ,.col.\39 0 ,.col.\39 5 ,.col.\31 00 {
+      width: 100%;
+      &.pad-l,&.pad-r {padding:0}
+    }
+  }
+}
+
+.gutter-40 {
+  .col {
+    padding-right: 40px;
+    &:last-child { padding-right: 0; }
+  }
+  img.float-left { margin: 0 22px 22px 0; }
+}
+.pad-y { padding-top: 32px; padding-bottom: 32px; }
+.pad-x { padding-left: $pad-x; padding-right: $pad-x; }
+.pad-top { padding-top: 20px; }
+.pad-bot { padding-bottom: 20px; }
+a.col {
+  display: block;
+  
+}
+.group:before, .group:after { content: ""; display: table; }
+.group:after { clear: both; }
+.group { zoom: 1; }
+.float-left * {float: left}
+.float-left {float: left; clear:none;}
+.float-right {float: right}
+.group.float-right {float: none; clear:both;}
+.group.float-left {float: none; clear:both;}
+.float-right * {float: right}
+.float-right .no-float {float: none}
+.centered { position: absolute; margin: auto; top:0;right:0;bottom:0;left:0; }
+.abs-top-right { position: absolute; right: 0; top:0;}
+.fr {float: right}
+.fl {float: left}
+a.db {display: block}
+.center-600 {
+  width: 600px; margin: 0 auto;
+}
+section {
+  
+  margin: 0 auto;
+}
+body {
+  @include min-screen(1140px) { 
+    section {width: 1140px;}
+  }
+  @include max-screen(1139px) { 
+    section {width: 100%;}
+  }
+} 
+  
+.text-pad {max-width: 920px; padding: 0 20px; margin: 0 auto;}
+.tac {text-align: center;}
