@@ -9,7 +9,8 @@ helpers do
     cpdata.klass == klass ? "active" : nil
   end
   def nav_link txt, section
-    link_to txt, "/#{section}", class: active_if(section), id: "nav_#{section}"
+    url = section == 'home' ? "/" : "/#{section}"
+    link_to txt, url, class: active_if(section), id: "nav_#{section}"
   end
   def bgi(url)
     "background-image: url('#{url}')"
